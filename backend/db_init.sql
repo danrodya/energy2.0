@@ -1,0 +1,11 @@
+CREATE USER energy_monitor WITH PASSWORD 'admin437';
+ALTER ROLE energy_monitor SET client_encoding TO 'utf8';
+ALTER ROLE energy_monitor SET default_transaction_isolation TO 'read committed';
+ALTER ROLE energy_monitor SET default_transaction_deferrable TO on;
+ALTER ROLE energy_monitor SET timezone TO 'UTC';
+CREATE DATABASE energy_monitor_db OWNER energy_monitor;
+GRANT ALL PRIVILEGES ON DATABASE energy_monitor_db TO energy_monitor;
+GRANT CONNECT ON DATABASE energy_monitor_db TO energy_monitor;
+ALTER DEFAULT PRIVILEGES FOR USER energy_monitor IN SCHEMA public GRANT ALL ON TABLES TO energy_monitor;
+ALTER DEFAULT PRIVILEGES FOR USER energy_monitor IN SCHEMA public GRANT ALL ON SEQUENCES TO energy_monitor;
+GRANT ALL PRIVILEGES ON SCHEMA public TO energy_monitor;
